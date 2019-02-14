@@ -1,0 +1,9 @@
+<section [ngClass]="{ 'closed' : !showSideBar }" [hidden]="!showSideBar">
+  <div>
+    <span>Content</span>
+    <a (click)="closeSideBar()">X</a>
+  </div>
+  <div>
+    <a *ngFor="let item of menus">{{ item.name }}</a>
+  </div>
+</section>
