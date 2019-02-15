@@ -1,5 +1,4 @@
 import {JobType} from "./JobType";
-import {JobsCatalog} from "./Catalog/JobsCatalog";
 
 // TODO Quel utilité ?
 

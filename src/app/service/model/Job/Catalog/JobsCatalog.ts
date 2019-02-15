@@ -2,24 +2,16 @@ import {JobTemplate} from "../Template/JobTemplate";
 import {JobType} from "../JobType";
 import {JobsCatalogFactory} from "./JobsCatalogFactory";
 
-export class JobsCatalog {
-    readonly catalog: Map<JobType, JobTemplate>;
-    private static instance: JobsCatalog;
-
-    private constructor() {
-        this.catalog = new Map;
-        this.catalog[JobType.BARBARIAN] = JobsCatalogFactory.buildBarbarianCatalog();
+export namespace JobsCatalog {
+    function initCatalog(): Map<JobType, JobTemplate> {
+        const catalog = new Map;
+        catalog[JobType.BARBARIAN] = JobsCatalogFactory.buildBarbarianCatalog();
+        return catalog;
     }
 
-    private static getInstance(): JobsCatalog {
-        if(this.instance) {
-            this.instance = new JobsCatalog();
-        }
+    const _catalog : Map<JobType, JobTemplate> = initCatalog();
 
-        return this.instance;
-    }
-
-    public static getJobTemplate(jobType: JobType): JobTemplate {
-        return this.getInstance().catalog[jobType];
+    export function getJobTemplate(jobType: JobType): JobTemplate {
+        return _catalog[jobType];
     }
 }

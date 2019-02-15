@@ -32,10 +32,10 @@ export class JobsCatalogFactory {
         jobFeatures[BarbarianFeatureType.RAGE] = new JobFeature(BarbarianFeatureType.RAGE, true, "Rage (Ex)", "Rage during some turns");
         jobFeaturesPerLevel[1] = jobFeatures;
 
-        return new JobTemplate(
-            JobType.BARBARIAN,
-            DiceType.d12,
-            [
+        return <JobTemplate>{
+            jobType: JobType.BARBARIAN,
+            hitDice: DiceType.d12,
+            jobSkills: [
                 BasicSkillType.ACROBATICS,
                 BasicSkillType.CLIMB,
                 BasicSkillType.CRAFT,
@@ -47,12 +47,12 @@ export class JobsCatalogFactory {
                 BasicSkillType.SURVIVAL,
                 BasicSkillType.SWIM
             ],
-            4,
-            BonusAttackBonusGridHigh,
-            saveGridMap,
-            weaponArmorProficiency,
-            jobFeaturesPerLevel,
-            "blabla"
-        );
+            skillRanksPerLevel: 4,
+            bonusAttackBonusGrid: BonusAttackBonusGridHigh,
+            saveBonusGridMap: saveGridMap,
+            equipementProficiency: weaponArmorProficiency,
+            jobFeaturesPerLevel: jobFeaturesPerLevel,
+            description: "blabla"
+        };
     }
 }

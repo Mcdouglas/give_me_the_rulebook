@@ -10,56 +10,32 @@ import {JobFeature, PickedJobFeature} from "../Feature/JobFeature";
 import {JobsCatalog} from "../Catalog/JobsCatalog";
 import {LevelUp} from "../Level/LevelUp";
 
-export class JobTemplate {
-    constructor(private _jobType: JobType,
-                private _hitDice: DiceType,
-                private _jobSkills: Array<SkillType>,
-                private _skillRanksPerLevel: number,
-                private _bonusAttackBonusGrid: DiceBonus[],
-                private _saveBonusGridMap: Map<SaveType, SaveBonusGrid>,
-                private _equipementProficiency: Map<EquipemetCategory, boolean>,
-                private _jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>,
-                private _description: string) {
-    }
+export interface JobTemplate {
+    jobType: JobType;
+    hitDice: DiceType;
+    jobSkills: Array<SkillType>;
+    skillRanksPerLevel: number;
+    bonusAttackBonusGrid: DiceBonus[];
+    saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
+    equipementProficiency: Map<EquipemetCategory, boolean>;
+    jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
+    description: string;
 
-    get jobType(): JobType {
-        return this._jobType;
-    }
-
-    get hitDice(): DiceType {
-        return this._hitDice;
-    }
-
-    get jobSkills(): Array<SkillType> {
-        return this._jobSkills;
-    }
-
-    get skillRanksPerLevel(): number {
-        return this._skillRanksPerLevel;
-    }
-
-    get bonusAttackBonusGrid(): DiceBonus[] {
-        return this._bonusAttackBonusGrid;
-    }
-
-    get saveBonusGridMap(): Map<SaveType, SaveBonusGrid> {
-        return this._saveBonusGridMap;
-    }
-
-    get equipementProficiency(): Map<EquipemetCategory, boolean> {
-        return this._equipementProficiency;
-    }
-
-    get jobFeaturesPerLevel(): Map<number, Map<JobFeatureType, JobFeature>> {
-        return this._jobFeaturesPerLevel;
-    }
-
-    get description(): string {
-        return this._description;
-    }
+    makeLevelUp(levelUp: LevelUp);
 }
 
-export class JobImplementation extends JobTemplate implements JobInterface{
+export class JobImplementation implements JobTemplate {
+
+    // from interface
+    bonusAttackBonusGrid: DiceBonus[];
+    description: string;
+    equipementProficiency: Map<EquipemetCategory, boolean>;
+    hitDice: DiceType;
+    jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
+    jobSkills: Array<SkillType>;
+    jobType: JobType;
+    saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
+    skillRanksPerLevel: number;
 
     private _currentLevel: number;
     readonly pickedJobFeaturesPerLevel: Map<number, Map<JobFeatureType, PickedJobFeature>>;
@@ -67,18 +43,19 @@ export class JobImplementation extends JobTemplate implements JobInterface{
 
     constructor(jobType: JobType) {
         const job = JobsCatalog.getJobTemplate(jobType);
-        super(jobType,
-            job.hitDice,
-            job.jobSkills,
-            job.skillRanksPerLevel,
-            job.bonusAttackBonusGrid,
-            job.saveBonusGridMap,
-            job.equipementProficiency,
-            job.jobFeaturesPerLevel,
-            job.description);
+
+        this.jobType = jobType;
         this.pickedJobFeaturesPerLevel = new Map;
         this.rolledHealthDice = new Map;
         this.currentLevel = 1;
+        this.bonusAttackBonusGrid = job.bonusAttackBonusGrid;
+        this.description = job.description;
+        this.equipementProficiency = job.equipementProficiency;
+        this.hitDice = job.hitDice;
+        this.jobFeaturesPerLevel = job.jobFeaturesPerLevel;
+        this.jobSkills = job.jobSkills;
+        this.saveBonusGridMap = job.saveBonusGridMap;
+        this.skillRanksPerLevel = job.skillRanksPerLevel;
     }
 
     public addJobFeaturePerLevel(level: number, jobFeatureType: JobFeatureType, pickedFeatureType: PickedFeatureType) {
@@ -102,8 +79,4 @@ export class JobImplementation extends JobTemplate implements JobInterface{
         this.addHealthDice(this.currentLevel, levelUp.healthDiceResult);
         this.addJobFeaturePerLevel(this.currentLevel, levelUp.newJobFeatureToPick.jobFeatureType, levelUp.newJobFeatureToPick.pickedFeatureType);
     }
-}
-
-export interface JobInterface {
-    makeLevelUp(levelUp: LevelUp);
 }
