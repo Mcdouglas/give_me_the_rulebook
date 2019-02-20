@@ -11,15 +11,15 @@ import {JobsCatalog} from "../Catalog/JobsCatalog";
 import {LevelUp} from "../Level/LevelUp";
 
 export interface JobTemplate {
-    jobType: JobType;
-    hitDice: DiceType;
-    jobSkills: Array<SkillType>;
-    skillRanksPerLevel: number;
-    bonusAttackBonusGrid: DiceBonus[];
-    saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
-    equipementProficiency: Map<EquipemetCategory, boolean>;
-    jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
-    description: string;
+    readonly _jobType: JobType;
+    readonly _hitDice: DiceType;
+    readonly _jobSkills: Array<SkillType>;
+    readonly _skillRanksPerLevel: number;
+    readonly _bonusAttackBonusGrid: DiceBonus[];
+    readonly _saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
+    readonly _equipementProficiency: Map<EquipemetCategory, boolean>;
+    readonly _jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
+    readonly _description: string;
 
     makeLevelUp(levelUp: LevelUp);
 }
@@ -27,43 +27,43 @@ export interface JobTemplate {
 export class JobImplementation implements JobTemplate {
 
     // from interface
-    bonusAttackBonusGrid: DiceBonus[];
-    description: string;
-    equipementProficiency: Map<EquipemetCategory, boolean>;
-    hitDice: DiceType;
-    jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
-    jobSkills: Array<SkillType>;
-    jobType: JobType;
-    saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
-    skillRanksPerLevel: number;
+    readonly _bonusAttackBonusGrid: DiceBonus[];
+    readonly _description: string;
+    readonly _equipementProficiency: Map<EquipemetCategory, boolean>;
+    readonly _hitDice: DiceType;
+    readonly _jobFeaturesPerLevel: Map<number, Map<JobFeatureType, JobFeature>>;
+    readonly _jobSkills: Array<SkillType>;
+    readonly _jobType: JobType;
+    readonly _saveBonusGridMap: Map<SaveType, SaveBonusGrid>;
+    readonly _skillRanksPerLevel: number;
 
     private _currentLevel: number;
-    readonly pickedJobFeaturesPerLevel: Map<number, Map<JobFeatureType, PickedJobFeature>>;
-    readonly rolledHealthDice: Map<number, number>;
+    private readonly _pickedJobFeaturesPerLevel: Map<number, Map<JobFeatureType, PickedJobFeature>>;
+    private readonly _rolledHealthDice: Map<number, number>;
 
     constructor(jobType: JobType) {
         const job = JobsCatalog.getJobTemplate(jobType);
 
-        this.jobType = jobType;
-        this.pickedJobFeaturesPerLevel = new Map;
-        this.rolledHealthDice = new Map;
+        this._jobType = jobType;
+        this._pickedJobFeaturesPerLevel = new Map;
+        this._rolledHealthDice = new Map;
         this.currentLevel = 1;
-        this.bonusAttackBonusGrid = job.bonusAttackBonusGrid;
-        this.description = job.description;
-        this.equipementProficiency = job.equipementProficiency;
-        this.hitDice = job.hitDice;
-        this.jobFeaturesPerLevel = job.jobFeaturesPerLevel;
-        this.jobSkills = job.jobSkills;
-        this.saveBonusGridMap = job.saveBonusGridMap;
-        this.skillRanksPerLevel = job.skillRanksPerLevel;
+        this._bonusAttackBonusGrid = job._bonusAttackBonusGrid;
+        this._description = job._description;
+        this._equipementProficiency = job._equipementProficiency;
+        this._hitDice = job._hitDice;
+        this._jobFeaturesPerLevel = job._jobFeaturesPerLevel;
+        this._jobSkills = job._jobSkills;
+        this._saveBonusGridMap = job._saveBonusGridMap;
+        this._skillRanksPerLevel = job._skillRanksPerLevel;
     }
 
     public addJobFeaturePerLevel(level: number, jobFeatureType: JobFeatureType, pickedFeatureType: PickedFeatureType) {
-        this.pickedJobFeaturesPerLevel[level][jobFeatureType] = new PickedJobFeature(level, jobFeatureType, pickedFeatureType);
+        this._pickedJobFeaturesPerLevel[level][jobFeatureType] = new PickedJobFeature(level, jobFeatureType, pickedFeatureType);
     }
 
     private addHealthDice(level: number, value: number) {
-        this.rolledHealthDice[level] = value;
+        this._rolledHealthDice[level] = value;
     }
 
     get currentLevel(): number {

@@ -33,9 +33,9 @@ export class JobsCatalogFactory {
         jobFeaturesPerLevel[1] = jobFeatures;
 
         return <JobTemplate>{
-            jobType: JobType.BARBARIAN,
-            hitDice: DiceType.d12,
-            jobSkills: [
+            _jobType: JobType.BARBARIAN,
+            _hitDice: DiceType.d12,
+            _jobSkills: [
                 BasicSkillType.ACROBATICS,
                 BasicSkillType.CLIMB,
                 BasicSkillType.CRAFT,
@@ -47,12 +47,12 @@ export class JobsCatalogFactory {
                 BasicSkillType.SURVIVAL,
                 BasicSkillType.SWIM
             ],
-            skillRanksPerLevel: 4,
-            bonusAttackBonusGrid: BonusAttackBonusGridHigh,
-            saveBonusGridMap: saveGridMap,
-            equipementProficiency: weaponArmorProficiency,
-            jobFeaturesPerLevel: jobFeaturesPerLevel,
-            description: "blabla"
+            _skillRanksPerLevel: 4,
+            _bonusAttackBonusGrid: BonusAttackBonusGridHigh,
+            _saveBonusGridMap: saveGridMap,
+            _equipementProficiency: weaponArmorProficiency,
+            _jobFeaturesPerLevel: jobFeaturesPerLevel,
+            _description: "blabla"
         };
     }
 }

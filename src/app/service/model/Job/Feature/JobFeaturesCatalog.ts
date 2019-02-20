@@ -1,20 +1,16 @@
 import {JobFeatureType} from "./JobFeatureType";
 import {JobFeature} from "./JobFeature";
+import {JobFeaturesCatalogFactory} from "./JobFeaturesCatalogFactory";
 
-export class JobFeaturesCatalog {
-    private static instance: JobFeaturesCatalog;
-
-    private constructor() {}
-
-    private static getInstance(): JobFeaturesCatalog {
-        if(this.instance) {
-            this.instance = new JobFeaturesCatalog();
-        }
-
-        return this.instance;
+export namespace JobFeaturesCatalog {
+    function initCatalog() : Map<JobFeatureType, JobFeature> {
+        let catalog = JobFeaturesCatalogFactory.addBarbarianFeaturesToCatalog(new Map);
+        return catalog;
     }
 
-    public static getJobFeature(jobFeatureType: JobFeatureType):JobFeature {
-        return undefined;//TODO
+    const _catalog : Map<JobFeatureType, JobFeature> = initCatalog();
+
+    export function getJobFeature(jobFeatureType: JobFeatureType): JobFeature {
+        return _catalog[jobFeatureType];
     }
 }
