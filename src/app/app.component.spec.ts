@@ -1,11 +1,18 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed, async} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {SideBarService} from "./service/ihm/side-bar.service";
+import {SideBarComponent} from "./component/side-bar/side-bar.component";
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        SideBarComponent
       ],
+      providers: [
+        SideBarService
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
