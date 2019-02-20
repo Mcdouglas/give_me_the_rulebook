@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import {SideBarService} from "../../service/ihm/side-bar.service";
+import {Component} from '@angular/core';
+import {SideBarService} from '../../service/ihm/side-bar.service';
 
 @Component({
   selector: 'side-bar',
@@ -14,13 +14,13 @@ export class SideBarComponent {
   constructor(private sideBarService: SideBarService) {
     this.sideBarService.show.subscribe((val: boolean) => this.showSideBar = val);
     this.menus = [
-      {name: "Personnage"},
-      {name: "Caractéristiques"},
-      {name: "Equipement"},
-      {name: "Compétences"},
-      {name: "Dons"},
-      {name: "Capacités"},
-      {name: "Sorts"}
+      {name: 'Personnage', path:'character-page'},
+      {name: 'Caractéristiques', path:'abilities-page'},
+      {name: 'Equipement', path:''},
+      {name: 'Compétences', path:''},
+      {name: 'Dons', path:''},
+      {name: 'Capacités', path:''},
+      {name: 'Sorts', path:''}
     ];
   }
 

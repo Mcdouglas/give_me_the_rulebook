@@ -4,6 +4,6 @@
     <a (click)="closeSideBar()">X</a>
   </div>
   <div>
-    <a *ngFor="let item of menus">{{ item.name }}</a>
+    <div routerLink='{{ item.path }}' routerLinkActive="active" *ngFor="let item of menus">{{ item.name }}</div>
   </div>
 </section>
