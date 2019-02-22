@@ -50,14 +50,14 @@ section > div:first-child > a {
   text-align: center;
 }
 
-section > div:first-child > a:hover {
+section > div:first-child > div:hover {
   background-color:#ccc;
   color:#000;
   height: 100%;
 }
 
 
-section > div:not(:first-child) > a {
+section > div:not(:first-child) > div {
   width: 100%;
   display: block;
   padding: 8px 16px;
@@ -65,12 +65,12 @@ section > div:not(:first-child) > a {
   cursor: pointer;
 }
 
-section > div:not(:first-child) > a:first-child {
+section > div:not(:first-child) > div:first-child {
   color: white;
   background-color: rgb(76, 175, 80);
 }
 
-section > div:not(:first-child) >  a:hover {
+section > div:not(:first-child) >  div:hover {
   background-color:#ccc;
   color:#000;
 }
