@@ -11,7 +11,7 @@ script: npm run build
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: dce13e36e9e5d497fd5e3793aaab2a763c3cc13d
+  github-token: d205edcca78ea82683ed6eb3595b100d5cfd3ae1
   local-dir: build
   keep-history: true
   on:
