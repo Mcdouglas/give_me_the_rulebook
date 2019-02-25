@@ -10,8 +10,4 @@ export class AppComponent {
 
   public constructor(private sideBarService: SideBarService) {
   }
-
-  public openSideBar(): void {
-    this.sideBarService.show.next(true);
-  }
 }

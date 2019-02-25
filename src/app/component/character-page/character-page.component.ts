@@ -13,4 +13,8 @@ export class CharacterPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  public openSideBar(): void {
+    this.sideBarService.show.next(true);
+  }
+
 }
