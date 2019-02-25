@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SideBarService} from "./service/ihm/side-bar.service";
+import {SideBarService} from "../../service/ihm/side-bar.service";
 
 @Component({
   selector: 'app-character-page',
