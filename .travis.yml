@@ -6,19 +6,21 @@ language: node_js
 node_js:
   - "10"
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-
 cache:
   directories:
-    - ./node_modules
+    - node_modules
 
 install:
-  - npm install
+  - npm install -g yarn
 
 script:
-  - npm run start
+  - yarn lint
+  - yarn build --base-href /give-me-the-rulebook/
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/my-awesome-project
+  on:
+branch: master
