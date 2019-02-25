@@ -1,4 +1,3 @@
-import {SideBarService} from "./service/ihm/side-bar.service";
 import {Component} from "@angular/core";
 
 @Component({
@@ -8,6 +7,6 @@ import {Component} from "@angular/core";
 })
 export class AppComponent {
 
-  public constructor(private sideBarService: SideBarService) {
+  public constructor() {
   }
 }

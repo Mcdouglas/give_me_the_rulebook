@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SideBarService} from "./service/ihm/side-bar.service";
 
 @Component({
   selector: 'app-character-page',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CharacterPageComponent implements OnInit {
   title: string = 'Witr';
 
-  constructor() { }
+  constructor(private sideBarService: SideBarService) { }
 
   ngOnInit() {
   }
