@@ -8,4 +8,7 @@ node_js:
 
 script: npm run build
 
-script: ng serve --open
+deploy:
+  provider: npm
+  email: "${GITHUB_EMAIL}"
+  api_key: "${GITHUB_TOKEN}"
