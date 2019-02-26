@@ -14,14 +14,23 @@ export class SideBarComponent {
   constructor(private sideBarService: SideBarService) {
     this.sideBarService.show.subscribe((val: boolean) => this.showSideBar = val);
     this.menus = [
-      {name: 'Personnage', path:'character-page'},
-      {name: 'Caractéristiques', path:'abilities-page'},
-      {name: 'Equipement', path:''},
-      {name: 'Compétences', path:''},
-      {name: 'Dons', path:''},
-      {name: 'Capacités', path:''},
-      {name: 'Sorts', path:''}
+      {name: 'Personnage', path:'character-page', selected: true},
+      {name: 'Caractéristiques', path:'abilities-page', selected: false},
+      {name: 'Equipement', path:'', selected: false},
+      {name: 'Compétences', path:'', selected: false},
+      {name: 'Dons', path:'', selected: false},
+      {name: 'Capacités', path:'', selected: false},
+      {name: 'Sorts', path:'', selected: false}
     ];
+  }
+
+  public selectMenu(itemName: string): void {
+    this.menus.forEach(x => x.selected = false);
+    this.menus.filter(x => x.name == itemName).forEach(x => x.selected = true);
+  }
+
+  public openSideBar(): void {
+    this.sideBarService.show.next(true);
   }
 
   public closeSideBar(): void {
