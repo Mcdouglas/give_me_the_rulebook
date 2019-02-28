@@ -8,6 +8,7 @@ export class CharacterService {
   constructor() { }
 
   public getCharacterDescription(characterId: string) : CharacterDescription{
+    // FIXME mock here
     return <CharacterDescription> {
       alias: 'JamesBond',
       player: 'JohnDoe',
