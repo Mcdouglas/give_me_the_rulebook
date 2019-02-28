@@ -4,12 +4,14 @@ import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {SideBarComponent} from './component/organisms/side-bar/side-bar.component';
 import {CharacterComponent} from './component/pages/character/character.component';
+import {CharacterTemplateComponent} from "./component/templates/character/character-template.component";
 import {AbilitiesComponent} from './component/pages/abilities/abilities.component'
 import {RouterModule, Routes} from "@angular/router";
-import { CharacterDescriptionComponent } from './component/pages/character/character-description/character-description.component';
+import { CharacterDescriptionComponent } from './component/organisms/character/description/character-description.component';
 
 const routes: Routes = [
-  { path: 'character-page', component: CharacterComponent },
+  { path: 'character-page', component: CharacterTemplateComponent },
+  { path: 'character-template', component: CharacterComponent },
   { path: 'abilities-page', component: AbilitiesComponent },
   { path: '**', component: CharacterComponent }
 ];
@@ -19,6 +21,7 @@ const routes: Routes = [
     AppComponent,
     SideBarComponent,
     CharacterComponent,
+    CharacterTemplateComponent,
     AbilitiesComponent,
     CharacterDescriptionComponent
   ],
