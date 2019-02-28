@@ -1,0 +1,14 @@
+<div id="menu-button" [ngClass]="{ 'closed' : !showSideBar }" (click)="openSideBar()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<section [ngClass]="{ 'closed' : !showSideBar }" [hidden]="!showSideBar">
+  <div>
+    <span>Content</span>
+    <a (click)="closeSideBar()">X</a>
+  </div>
+  <div>
+    <div [ngClass]="{ 'selected' : item.selected}" (click)="selectMenu(item.name)" routerLink='{{ item.path }}' routerLinkActive="active" *ngFor="let item of menus">{{ item.name }}</div>
+  </div>
+</section>
