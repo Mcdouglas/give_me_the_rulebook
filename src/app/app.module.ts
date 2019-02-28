@@ -2,15 +2,15 @@ import {AppComponent} from './app.component';
 import {SideBarService} from "./service/ihm/side-bar/side-bar.service";
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {SideBarComponent} from './component/side-bar/side-bar.component';
-import {CharacterComponent} from './component/character/character.component';
-import {AbilitiesPageComponent} from './component/abilities-page/abilities-page.component'
+import {SideBarComponent} from './component/organisms/side-bar/side-bar.component';
+import {CharacterComponent} from './component/pages/character/character.component';
+import {AbilitiesComponent} from './component/pages/abilities/abilities.component'
 import {RouterModule, Routes} from "@angular/router";
-import { CharacterDescriptionComponent } from './component/character/character-description/character-description.component';
+import { CharacterDescriptionComponent } from './component/pages/character/character-description/character-description.component';
 
 const routes: Routes = [
   { path: 'character-page', component: CharacterComponent },
-  { path: 'abilities-page', component: AbilitiesPageComponent },
+  { path: 'abilities-page', component: AbilitiesComponent },
   { path: '**', component: CharacterComponent }
 ];
 
@@ -19,7 +19,7 @@ const routes: Routes = [
     AppComponent,
     SideBarComponent,
     CharacterComponent,
-    AbilitiesPageComponent,
+    AbilitiesComponent,
     CharacterDescriptionComponent
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CharacterDescription, CharacterService} from "../../../service/ihm/character/character.service";
+import {CharacterDescription, CharacterService} from "../../../../service/ihm/character/character.service";
 
 @Component({
   selector: 'character-description',
