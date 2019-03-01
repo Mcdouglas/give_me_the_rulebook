@@ -8,6 +8,7 @@ import {CharacterTemplateComponent} from "./component/templates/character/charac
 import {AbilitiesComponent} from './component/pages/abilities/abilities.component'
 import {RouterModule, Routes} from "@angular/router";
 import { CharacterDescriptionComponent } from './component/organisms/character/description/character-description.component';
+import { ImprovedLabelComponent } from './component/atoms/improved-label/improved-label.component';
 
 const routes: Routes = [
   { path: 'character-page', component: CharacterTemplateComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
     CharacterComponent,
     CharacterTemplateComponent,
     AbilitiesComponent,
-    CharacterDescriptionComponent
+    CharacterDescriptionComponent,
+    ImprovedLabelComponent
   ],
   imports: [
     BrowserModule,
