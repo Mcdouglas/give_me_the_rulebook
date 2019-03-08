@@ -1,21 +1,25 @@
-@import '../character.component';
+@import '../../../../app.component';
 
 header {
 	width: 100%;
 	display: inline;
 
 	& > div {
+		box-sizing: border-box;
+		border: solid rgb(0, 255, 0) 4px;
+		// ^^^^^ TEST ^^^^^
 		height: calc(#{$hauteur_header} / 2);
 		width: auto;
 		flex: 1;
 		display: flex;
 
-		& > div {
+
+		// TODO clean that
+		& > improved-label {
 			height: 100%;
 			width: auto;
 			flex: 1;
 			text-align: center;
-			background-color: rgb(0, 255, 0);
 			line-height: calc(#{$hauteur_header} / 2);
 		}
 	}

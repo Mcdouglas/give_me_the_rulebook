@@ -1,0 +1,12 @@
+@import '../../../app.component';
+
+div {
+	font-family: 'MedievalSharp';
+	font-weight: bold;
+	// ^^^^^ TEST ^^^^^
+	height: 100%;
+	width: auto;
+	flex: 1;
+	text-align: center;
+	line-height: calc(#{$hauteur_header} / 2);
+}
